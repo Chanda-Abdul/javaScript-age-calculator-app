@@ -26,15 +26,15 @@ Your challenge is to build out an age calculator app and get it looking as close
 
 You can use any tools you like to help you complete the challenge. So if you've got something you'd like to practice, feel free to give it a go.
 
-Your users should be able to: 
+<b>Your users should be able to: </b>
 
-- [x] View an age in years, months, and days after submitting a valid date through the form
+- [x] View an age in <i>years</i>, <i>months</i>, and <i>days</i> after submitting a valid date through the form
 - [x] Receive validation errors if:
   - [x] Any field is empty when the form is submitted
-  - [x] The day number is not between 1-31
-  - [x] The month number is not between 1-12
+  - [x] The day number is not between <i>1-31</i>
+  - [x] The month number is not between <i>1-12</i>
   - [x] The year is in the future
-  - [x] The date is invalid e.g. 31/04/1991 (there are 30 days in April)
+  - [x] The date is invalid e.g. <i>31/04/1991(there are 30 days in April)</i> 
 - [ ] View the optimal layout for the interface depending on their device's screen size
 - [ ] See hover and focus states for all interactive elements on the page
 - [ ] **Bonus**: See the age numbers animate to their final number when the form is submitted
@@ -46,8 +46,8 @@ Your users should be able to:
 
 ## Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [here](https://github.com/Chanda-Abdul/javaScript-age-calculator-app)
+- Solution URL: [here](https://github.com/Chanda-Abdul/javaScript-age-calculator-app)
+- Live Site URL: [here](https://heartfelt-peony-aad13d.netlify.app/)
 
 # My process
 
