@@ -1,0 +1,203 @@
+/* Mixins */
+@import url(https://fonts.bunny.net/css?family=poppins:400,400i,600,600i,700,800i);
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit; }
+
+html {
+  /* set 1rem === 10px */
+  font-size: 62.5%; }
+
+body {
+  box-sizing: border-box; }
+
+a {
+  text-decoration: none;
+  transition: 0.3s; }
+
+button:hover, input:hover {
+  cursor: pointer; }
+
+body {
+  font-family: 'Poppins', sans-serif;
+  font-size: 3.2rem;
+  font-weight: 700; }
+
+.card {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  text-align: center;
+  height: 48.6rem;
+  width: 34.3rem;
+  border-radius: 2.4rem 2.4rem 10rem 2.4rem;
+  padding: 4.8rem 2.4rem;
+  /* Body text */
+  font-style: italic;
+  font-weight: 400;
+  font-size: 1.4rem;
+  line-height: 2.1rem;
+  color: #141414; }
+  .card__results--section {
+    margin-top: 6.4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    text-align: center; }
+  .card__results--wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    text-align: center; }
+  .card__results--display {
+    /* Heading Large */
+    font-style: italic;
+    font-weight: 800;
+    font-size: 10.4rem;
+    line-height: 110%;
+    letter-spacing: -0.02em;
+    color: #141414;
+    text-align: left;
+    font-size: 5.6rem;
+    line-height: 6.2rem; }
+    .card__results--display span {
+      color: #854dff; }
+
+.icon {
+  position: absolute;
+  transform: rotate(-90deg);
+  padding: 2rem;
+  gap: 8px;
+  width: 6.4rem;
+  height: 6.4rem;
+  bottom: -3.2rem;
+  left: calc(50% - 3.2rem);
+  background: #854dff;
+  border-radius: 21.6rem;
+  z-index: 1; }
+
+.icon.invalid {
+  background: #ff5757;
+  transform: rotate(180deg); }
+
+.icon.valid {
+  background: green;
+  transform: rotate(-90deg); }
+
+.form {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  text-align: center;
+  width: 100%;
+  padding-bottom: 6.4rem;
+  border-bottom: 1px solid #dbdbdb; }
+  .form__wrapper--input {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    text-align: center;
+    text-align: left;
+    width: 8.76rem; }
+  .form__label {
+    /* Heading Small */
+    font-weight: 700;
+    font-size: 1.4rem;
+    line-height: 2.1rem;
+    font-style: normal;
+    /* identical to box height */
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: #141414;
+    font-size: 1.2rem;
+    line-height: 1.8rem;
+    letter-spacing: 0.25em;
+    color: #716f6f;
+    color: #716f6f; }
+  .form__input {
+    /* Heading Medium */
+    font-weight: 700;
+    font-size: 3.2rem;
+    line-height: 4.8rem;
+    letter-spacing: 0.01em;
+    color: #141414;
+    font-size: 2rem;
+    line-height: 3rem;
+    color: #141414;
+    height: 5.4rem;
+    width: 8.7rem;
+    border-radius: 8px;
+    border: 1px solid #dbdbdb;
+    padding: 1.2rem 1.6rem 1.2rem 1.6rem; }
+    .form__input:focus {
+      border-color: #854dff; }
+  .form__error {
+    display: none;
+    max-width: 7.7rem;
+    /* Body text */
+    font-style: italic;
+    font-weight: 400;
+    font-size: 1.4rem;
+    line-height: 2.1rem;
+    color: #141414;
+    color: #ff5757;
+    font-size: .75rem; }
+  .form__error.display-error {
+    display: block; }
+
+.header {
+  max-width: 34.3rem;
+  margin-bottom: 1.6rem; }
+  .header__title {
+    /* Heading Medium */
+    font-weight: 700;
+    font-size: 3.2rem;
+    line-height: 4.8rem;
+    letter-spacing: 0.01em;
+    color: #141414; }
+  .header__info {
+    text-justify: newspaper;
+    font-style: normal;
+    font-weight: 400;
+    color: #716f6f;
+    /* Body text */
+    font-style: italic;
+    font-weight: 400;
+    font-size: 1.4rem;
+    line-height: 2.1rem;
+    color: #141414;
+    margin: 1.6rem 0; }
+    .header__info--emphasis {
+      color: #854dff;
+      font-style: italic;
+      font-weight: 600; }
+
+footer {
+  bottom: 0;
+  font-size: 1.1rem;
+  text-align: center; }
+  footer__link:active, footer__link:visited {
+    color: #854dff; }
+
+body {
+  width: 100vw;
+  background-color: #dbdbdb; }
+
+.container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  text-align: center;
+  padding: 8.8rem 1.6rem auto 1.6rem; }

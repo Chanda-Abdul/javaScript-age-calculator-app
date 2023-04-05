@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+  <link rel="icon"
+        type="image/png"
+        sizes="32x32"
+        href="./assets/images/favicon-32x32.png">
+  <link rel="stylesheet"
+        href="/styles/styles.css">
+  <title>Frontend Mentor | Age calculator app</title>
+
+
+</head>
+
+<body>
+  <div class="container ">
+
+    <header class="header">
+      <h1 class="header__title">Age calculator app</h1>
+      <p class="header__info">Enter the <span class="header__info--emphasis">day</span>, <span
+              class="header__info--emphasis">month</span>, and <span class="header__info--emphasis">year</span> of your
+        birthday (or any past event), to calculate exactly how old you are down to the <span
+              class="header__info--emphasis">year</span>, <span class="header__info--emphasis">month</span> and <span
+              class="header__info--emphasis">day</span>.</p>
+    </header>
+    <div class="card">
+      <form class="form"
+            name="date-calc-form"
+            novalidate>
+
+        <div class="form__wrapper--input">
+          <label for="month"
+                 class="form__label">
+            Month </label>
+          <input type="text"
+                 name="month"
+                 id="month"
+                 class="form__input"
+                 placeholder="MM"
+                 pattern="(0?[1-9]|1[0-2])"
+                 required>
+          <div class="form__error month-error"
+               id="month-error">&nbsp;</div>
+        </div>
+
+        <div class="form__input--wrapper">
+          <label for="day"
+                 class="form__label">
+            Day</label>
+          <input type="text"
+                 name="day"
+                 id="day"
+                 class="form__input"
+                 placeholder="DD"
+                 required
+                 minlength="1"
+                 maxlength="2">
+          <div class="form__error day-error display-error"
+               id="day-error">&nbsp;</div>
+        </div>
+
+        <div class="form__input--wrapper"> <label for="year"
+                 class="form__label">
+            Year
+          </label>
+          <input type="text"
+                 name="year"
+                 id="year"
+                 class="form__input"
+                 placeholder="YYYY"
+                 required
+                 pattern="(202[0-3]|201[0-9]|200[0-9]|199[0-9]|19[0-8][0-9])"
+                 minlength="4"
+                 maxlength="4">
+          <div class="form__error year-error"
+               id="year-error">&nbsp;</div>
+        </div>
+
+
+        <button type='button'
+                class="btn btn-calculate"><img src="/assets/images/icon-arrow.svg"
+               alt="icon-arrow-down"
+               class="icon"
+               onclick="calculateTimePassed()"></button>
+      </form>
+
+      <section class="card__results--section">
+        <div class="card__results--wrapper">
+          <p class="card__results--display">
+            <span class="card__results--display-year"
+                  id="year-result">--</span> years
+          </p>
+        </div>
+
+        <div class="card__results--wrapper">
+          <p class="card__results--display">
+            <span class="card__results--display-month"
+                  id="month-result">--</span>
+            months
+          </p>
+        </div>
+        <div class="card__results--wrapper">
+          <p class="card__results--display">
+            <span class="card__results--display-day"
+                  id="day-result">--</span>
+            days
+          </p>
+        </div>
+      </section>
+    </div>
+    <footer class="attribution">
+      Challenge by <a href="https://www.frontendmentor.io/"
+         class="footer__link"
+         target="_blank">Frontend Mentor</a>. Coded by <a href='https://www.ChandaAbdul.dev'> Chanda Abdul</a>.
+    </footer>
+  </div>
+
+
+
+
+
+</body>
+        <script defer
+        src="scripts/userInput.js"></script>
+        <script defer
+        src="scripts/displayOutput.js"></script>
+
+</html>

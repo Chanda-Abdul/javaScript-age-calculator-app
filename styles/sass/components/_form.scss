@@ -1,0 +1,44 @@
+.form {
+    position: relative;
+    @include flex(row, space-between, flex-start);
+    width: 100%;
+    padding-bottom: 6.4rem;
+    border-bottom: 1px solid $neutral-light-grey;
+
+    &__wrapper--input {
+        @include flex(column, flex-start, flex-start);
+        text-align: left;
+        width: 8.76rem;
+    }
+
+    &__label {
+        @include heading-tertiary-mobile;
+        color: $neutral-smokey-grey;
+    }
+
+    &__input {
+        @include input-text;
+        height: 5.4rem;
+        width: 8.7rem;
+        border-radius: 8px;
+        border: 1px solid $neutral-light-grey;
+        padding: 1.2rem 1.6rem 1.2rem 1.6rem;
+
+        &:focus {
+            border-color: $primary-purple;
+        }
+    }
+
+    &__error {
+        display: none;
+        max-width: 7.7rem;
+        @include body-text;
+        color: $primary-light-red;
+        font-size: .75rem;
+    }
+
+    &__error.display-error {
+        display: block;
+
+    }
+}

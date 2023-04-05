@@ -1,0 +1,55 @@
+.card {
+    background-color: $neutral-white;
+    @include flex(column, flex-start, center);
+    height: 48.6rem;
+    width: 34.3rem;
+    border-radius: 2.4rem 2.4rem 10rem 2.4rem;
+    padding: 4.8rem 2.4rem;
+    @include body-text;
+
+    &__results {
+        &--section {
+
+            margin-top: 6.4rem;
+            @include flex(column, flex-start, flex-start);
+        }
+
+        &--wrapper {
+            @include flex(row, flex-start, flex-start);
+        }
+
+        &--display {
+            @include heading-primary-mobile;
+
+            & span {
+                color: $primary-purple;
+            }
+        }
+    }
+}
+
+.icon {
+    position: absolute;
+    transform: rotate(-90deg);
+    padding: 2rem;
+    gap: 8px;
+    width: 6.4rem;
+    height: 6.4rem;
+    bottom: -3.2rem;
+    left: calc(50% - 3.2rem);
+    background: $primary-purple;
+    border-radius: 21.6rem;
+    z-index: 1;
+
+
+}
+
+.icon.invalid {
+    background: $primary-light-red;
+    transform: rotate(180deg);
+}
+
+.icon.valid {
+    background: green;
+    transform: rotate(-90deg);
+}

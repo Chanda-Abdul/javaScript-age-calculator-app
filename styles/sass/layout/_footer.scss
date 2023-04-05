@@ -1,0 +1,16 @@
+footer {
+    // position:sticky;
+    bottom: 0;
+    font-size: 1.1rem;
+    text-align: center;
+
+    &__link {
+        &:active, &:visited{color: $primary-purple;}
+        
+    }
+
+// .attribution {  font-size: 1.1rem;}
+    
+
+    // .attribution a {  color: $primary-purple;}
+}

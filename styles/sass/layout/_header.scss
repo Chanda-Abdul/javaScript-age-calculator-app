@@ -1,0 +1,26 @@
+.header {
+  max-width: 34.3rem;
+  margin-bottom: 1.6rem;
+
+  &__title {
+    @include heading-secondary;
+  }
+
+  &__info {
+    text-justify: newspaper;
+    font-style: normal;
+    font-weight: 400;
+    color: $neutral-smokey-grey;
+    @include body-text;
+    margin: 1.6rem 0;
+
+    &--emphasis {
+      color: $primary-purple;
+      font-style: italic;
+      font-weight: 600;
+    }
+  }
+
+}
+
+

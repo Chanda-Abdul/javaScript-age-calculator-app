@@ -1,0 +1,72 @@
+@import url(https://fonts.bunny.net/css?family=poppins:400,400i,600,600i,700,800i);
+
+body {
+  font-family: 'Poppins', sans-serif;
+  font-size: $font-size-default;
+  font-weight: 700;
+}
+
+@mixin heading-primary {
+  /* Heading Large */
+  font-style: italic;
+  font-weight: 800;
+  font-size: 10.4rem;
+  line-height: 110%;
+  letter-spacing: -0.02em;
+  color: $neutral-off-black;
+  text-align: left;
+}
+
+@mixin heading-primary-mobile {
+  @include heading-primary();
+  font-size: 5.6rem;
+  line-height: 6.2rem;
+}
+
+@mixin heading-secondary {
+  /* Heading Medium */
+  font-weight: 700;
+  font-size: 3.2rem;
+  line-height: 4.8rem;
+  letter-spacing: 0.01em;
+  color: $neutral-off-black;
+}
+
+
+
+@mixin heading-tertiary {
+  /* Heading Small */
+  font-weight: 700;
+  font-size: 1.4rem;
+  line-height: 2.1rem;
+  font-style: normal;
+  /* identical to box height */
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: $neutral-off-black;
+}
+
+@mixin heading-tertiary-mobile {
+  @include heading-tertiary;
+  font-size: 1.2rem;
+  line-height: 1.8rem;
+  letter-spacing: 0.25em;
+  color: $neutral-smokey-grey;
+
+}
+
+@mixin body-text {
+  /* Body text */
+  font-style: italic;
+  font-weight: 400;
+  font-size: 1.4rem;
+  line-height: 2.1rem;
+  color: $neutral-off-black;
+}
+
+@mixin input-text {
+  @include heading-secondary;
+  font-size: 2rem;
+  line-height: 3rem;
+  color: $neutral-off-black;
+}

@@ -1,0 +1,12 @@
+{
+  "name": "Age calculator app",
+  "description": "Landing page for Age calculator app",
+  "main": "index.html",
+  "scripts": {
+    "start": "npm run compile:sass ",
+    "compile:sass": "node-sass styles/sass/main.scss styles/styles.css -w"
+  },
+  "dependencies": {
+    "node-sass": "^8.0.0"
+  }
+}
