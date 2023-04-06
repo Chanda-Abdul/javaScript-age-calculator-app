@@ -13,13 +13,10 @@
   <link rel="stylesheet"
         href="/styles/styles.css">
   <title>Frontend Mentor | Age calculator app</title>
-
-
 </head>
 
 <body>
   <div class="container ">
-
     <header class="header">
       <h1 class="header__title">Age calculator app</h1>
       <p class="header__info">Enter the <span class="header__info--emphasis">day</span>, <span
@@ -28,12 +25,14 @@
               class="header__info--emphasis">year</span>, <span class="header__info--emphasis">month</span> and <span
               class="header__info--emphasis">day</span>.</p>
     </header>
+
+
     <div class="card">
       <form class="form"
             name="date-calc-form"
             novalidate>
-        <div class="form__wrapper--content">
 
+        <div class="form__wrapper--content">
           <div class="form__wrapper--input"
                id="month-input-error">
             <label for="month"
@@ -45,7 +44,8 @@
                    class="form__input"
                    placeholder="MM"
                    required>
-            <span class="form__error--message"  id="month-error">&nbsp;</span>
+            <span class="form__error--message"
+                  id="month-error">&nbsp;</span>
           </div>
 
           <div class="form__wrapper--input"
@@ -59,7 +59,8 @@
                    class="form__input"
                    placeholder="DD"
                    required>
-            <span class="form__error--message" id="day-error">&nbsp;</span>
+            <span class="form__error--message"
+                  id="day-error">&nbsp;</span>
           </div>
 
           <div class="form__wrapper--input"
@@ -74,27 +75,26 @@
                    class="form__input"
                    placeholder="YYYY"
                    required>
-            <span class="form__error--message" id="year-error">&nbsp;</span>
+            <span class="form__error--message"
+                  id="year-error">&nbsp;</span>
           </div>
         </div>
 
         <button type='button'
-                class="btn btn-calculate"id="btn-calculate"><img src="/assets/images/icon-arrow.svg"
+                class="btn btn-calculate"
+                id="btn-calculate"><img src="/assets/images/icon-arrow.svg"
                alt="icon-arrow-down"
                class="icon"
-               
                onclick="calculateTimePassed()"></button>
       </form>
 
       <section class="card__results--section">
         <div class="card__results--wrapper">
           <p class="card__results--display">
-            
             <span class="card__results--display-year"
                   id="year-result">--</span> years
           </p>
         </div>
-
         <div class="card__results--wrapper">
           <p class="card__results--display">
             <span class="card__results--display-month"
@@ -111,14 +111,15 @@
         </div>
       </section>
     </div>
+
     <footer class="footer">
       Challenge by <a href="https://www.frontendmentor.io/"
          class="footer__link"
          target="_blank">Frontend Mentor</a>. Coded by<a href='https://www.ChandaAbdul.dev'> Chanda Abdul</a>.
     </footer>
   </div>
-
 </body>
+
 <script defer
         src="scripts/userInput.js"></script>
 <script defer

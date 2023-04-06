@@ -7,3 +7,11 @@ footer {
     text-align: center;
     padding: 1.6rem auto;
 }
+
+@media screen and (min-width:65em) {
+    footer {
+        width: 100%;
+        font-size: 1.4rem;
+        padding: 3.2rem auto;
+    }
+}

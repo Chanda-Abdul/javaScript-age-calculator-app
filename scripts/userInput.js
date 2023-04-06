@@ -49,7 +49,7 @@ function validateInputDate() {
   let validYear = true;
 
   /* Update month for leap years */
-  if ((!(year % 4) && year % 100) || !(year % 400)) daysPerMonth[1] = 29;
+((!(year % 4) && year % 100) || !(year % 400)) ? daysPerMonth[1] = 29 : daysPerMonth[1] = 28;
 
   /* Validate day of month is within range*/
   if (dayInputValue == null || '') {

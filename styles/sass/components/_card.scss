@@ -5,9 +5,8 @@
     height: 48.6rem;
     width: 34.3rem;
     border-radius: 2.4rem 2.4rem 10rem 2.4rem;
-    margin-bottom: auto;
+    margin-bottom: 4.4rem;
     padding: 4.8rem 2.4rem;
-
 
     &__results {
         &--section {
@@ -30,3 +29,16 @@
     }
 }
 
+@media screen and (min-width:65em) {
+    .card {
+        width: 84rem;
+        height: 65.1rem;
+        padding: 5.6rem;
+
+        &__results--display {
+            @include heading-primary;
+        }
+    }
+
+
+}

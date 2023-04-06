@@ -31,7 +31,6 @@
                 input {
                     border: 1px solid $primary-light-red;
                 }
-
             }
 
             span {
@@ -40,23 +39,14 @@
                 @include body-text;
                 color: $primary-light-red;
                 font-size: .75rem;
+                line-height: 0;
             }
 
             span.display-error {
-                // @include body-text;
-                color: $primary-light-red;
-                display: block;
-
-
+                display: contents;
             }
-
-
         }
-
-
     }
-
-
 
     &__label {
         @include heading-tertiary-mobile;
@@ -65,7 +55,6 @@
         margin: .4rem;
     }
 
-
     input {
         @include input-text;
         height: 5.4rem;
@@ -73,10 +62,7 @@
         border-radius: 8px;
         color: $neutral-off-black !important;
         border: 1px solid $neutral-light-grey;
-
         padding: 1.2rem 1.6rem 1.2rem 1.6rem;
-
-
 
         &:active,
         &:focus {
@@ -85,17 +71,40 @@
     }
 }
 
-@media screen and (min-width:768px) {
-    &__wrapper {
-        &--content {
-            &--input {
+@media screen and (min-width:48em) {
+    .form__wrapper--content--input.input-error span {
+        font-size: 1.4rem;
+    }
+}
 
-                &.input-error {
-                    span {
-                        font-size: 1.4rem;
-                    }
-                }
+
+@media screen and (min-width:65em) {
+    .form {
+        height: 15.1rem;
+
+        &__wrapper {
+            &--content {
+                @include flex(row, flex-start, flex-start);
+                height: 10.1rem;
             }
+
+            &--input {
+                text-align: left;
+                width: 16rem;
+                height: 7.2rem;
+                margin-right: 3.2rem;
+            }
+        }
+
+        &__label {
+            @include heading-tertiary;
+            margin-bottom: .8rem;
+        }
+
+        input {
+            width: 16rem;
+            height: 7.2rem;
+            margin-right: 3.2rem;
         }
     }
 }

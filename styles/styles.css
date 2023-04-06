@@ -1,5 +1,44 @@
 /* Mixins */
 @import url(https://fonts.bunny.net/css?family=poppins:400,400i,600,600i,700,800i);
+.header {
+  animation-duration: 1.5s;
+  animation-name: animate-pop;
+  animation-timing-function: cubic-bezier(0.26, 0.53, 0.74, 1.48);
+  animation-fill-mode: forwards; }
+
+/* Card => entrance pop in*/
+.card {
+  animation-duration: .75s;
+  animation-delay: 0.5s;
+  animation-name: animate-pop;
+  animation-timing-function: cubic-bezier(0.26, 0.53, 0.74, 1.48);
+  animation-fill-mode: backwards; }
+
+.form__wrapper--input {
+  animation-name: animate-pop;
+  animation-timing-function: cubic-bezier(0.77, 0.14, 0.91, 1.25);
+  animation-duration: 2s; }
+  .form__wrapper--input:nth-child(1) {
+    animation-delay: 0.2s; }
+  .form__wrapper--input:nth-child(2) {
+    animation-delay: 0.4s; }
+  .form__wrapper--input:nth-child(3) {
+    animation-delay: 0.6s; }
+
+.card__results--section {
+  animation-name: animate-pop;
+  animation-duration: 1.5s;
+  animation-delay: 1s; }
+
+@keyframes animate-pop {
+  0% {
+    opacity: 0;
+    transform: scale(0.5, 0.5); }
+  100% {
+    opacity: 1;
+    transform: scale(1, 1); } }
+
+/* Calculate/Submit button */
 .icon {
   -webkit-animation: slide-center 1.5s forwards;
   -webkit-animation-delay: 1s;
@@ -44,6 +83,35 @@
     background: #854dff;
     left: calc(50% - 3.2rem);
     transform: rotate(-720deg); } }
+
+@media screen and (min-width: 65em) {
+  @-webkit-keyframes slide-center {
+    100% {
+      background: #854dff;
+      left: calc(100% - 6.4rem);
+      transform: rotate(-90deg); }
+    0% {
+      background: inherit;
+      left: calc(100% - 6.4rem);
+      transform: rotate(90deg); } }
+  @-webkit-keyframes slide-right {
+    100% {
+      left: calc(100% - 6.4rem);
+      transform: rotate(0deg);
+      background: #141414; }
+    0% {
+      background: #854dff;
+      left: calc(100% - 6.4rem);
+      transform: rotate(900deg); } }
+  @-webkit-keyframes slide-left {
+    100% {
+      background: #ff5757;
+      left: calc(100% - 6.4rem);
+      transform: rotate(180deg); }
+    0% {
+      background: #854dff;
+      left: calc(100% - 6.4rem);
+      transform: rotate(-720deg); } } }
 
 *,
 *::after,
@@ -90,18 +158,25 @@ body {
 
 .btn-calculate {
   border: none;
-  background-color: transparent; }
+  background-color: transparent;
+  width: 6.4rem;
+  height: 6.4rem; }
   .btn-calculate .icon {
     position: absolute;
-    left: calc(50% - 3.2rem);
-    bottom: -3.2rem;
+    left: calc(50% - 4.2rem);
+    bottom: -4.2rem;
     transform: rotate(-90deg);
     padding: 2rem;
-    width: 6.4rem;
-    height: 6.4rem;
     background: #854dff;
-    border-radius: 21.6rem;
+    border-radius: 50%;
     z-index: 1; }
+
+@media screen and (min-width: 65em) {
+  .btn-calculate.icon {
+    width: 9.6rem;
+    height: 9.6rem;
+    top: -4.8rem;
+    left: calc(100% - 4.8rem); } }
 
 .card {
   background-color: white;
@@ -111,6 +186,7 @@ body {
   align-items: center;
   text-align: center;
   /* Body text */
+  font-style: italic;
   font-weight: 400;
   font-size: 1.4rem;
   line-height: 2.1rem;
@@ -118,7 +194,7 @@ body {
   height: 48.6rem;
   width: 34.3rem;
   border-radius: 2.4rem 2.4rem 10rem 2.4rem;
-  margin-bottom: auto;
+  margin-bottom: 4.4rem;
   padding: 4.8rem 2.4rem; }
   .card__results--section {
     width: 100%;
@@ -147,6 +223,21 @@ body {
     line-height: 6.2rem; }
     .card__results--display span {
       color: #854dff; }
+
+@media screen and (min-width: 65em) {
+  .card {
+    width: 84rem;
+    height: 65.1rem;
+    padding: 5.6rem; }
+    .card__results--display {
+      /* Heading Large */
+      font-style: italic;
+      font-weight: 800;
+      font-size: 10.4rem;
+      line-height: 110%;
+      letter-spacing: -0.02em;
+      color: #141414;
+      text-align: left; } }
 
 .form {
   position: relative;
@@ -181,25 +272,25 @@ body {
         display: none;
         max-width: 7.7rem;
         /* Body text */
+        font-style: italic;
         font-weight: 400;
         font-size: 1.4rem;
         line-height: 2.1rem;
         color: #141414;
         color: #ff5757;
-        font-size: .75rem; }
+        font-size: .75rem;
+        line-height: 0; }
       .form__wrapper--input span.display-error {
-        color: #ff5757;
-        display: block; }
+        display: contents; }
   .form__label {
     /* Heading Small */
     font-weight: 700;
     font-size: 1.4rem;
     line-height: 2.1rem;
     font-style: normal;
-    /* identical to box height */
     letter-spacing: 0.25em;
     text-transform: uppercase;
-    color: #141414;
+    color: #716f6f;
     font-size: 1.2rem;
     line-height: 1.8rem;
     letter-spacing: 0.25em;
@@ -226,9 +317,39 @@ body {
     .form input:active, .form input:focus {
       border: 1px solid #854dff; }
 
-@media screen and (min-width: 768px) {
-  __wrapper--content--input.input-error span {
+@media screen and (min-width: 48em) {
+  .form__wrapper--content--input.input-error span {
     font-size: 1.4rem; } }
+
+@media screen and (min-width: 65em) {
+  .form {
+    height: 15.1rem; }
+    .form__wrapper--content {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      align-items: flex-start;
+      text-align: center;
+      height: 10.1rem; }
+    .form__wrapper--input {
+      text-align: left;
+      width: 16rem;
+      height: 7.2rem;
+      margin-right: 3.2rem; }
+    .form__label {
+      /* Heading Small */
+      font-weight: 700;
+      font-size: 1.4rem;
+      line-height: 2.1rem;
+      font-style: normal;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: #716f6f;
+      margin-bottom: .8rem; }
+    .form input {
+      width: 16rem;
+      height: 7.2rem;
+      margin-right: 3.2rem; } }
 
 .header {
   max-width: 34.3rem;
@@ -246,6 +367,7 @@ body {
     font-weight: 400;
     color: #716f6f;
     /* Body text */
+    font-style: italic;
     font-weight: 400;
     font-size: 1.4rem;
     line-height: 2.1rem;
@@ -263,6 +385,7 @@ footer {
   align-items: center;
   text-align: center;
   /* Body text */
+  font-style: italic;
   font-weight: 400;
   font-size: 1.4rem;
   line-height: 2.1rem;
@@ -272,3 +395,9 @@ footer {
   font-size: 1.1rem;
   text-align: center;
   padding: 1.6rem auto; }
+
+@media screen and (min-width: 65em) {
+  footer {
+    width: 100%;
+    font-size: 1.4rem;
+    padding: 3.2rem auto; } }
