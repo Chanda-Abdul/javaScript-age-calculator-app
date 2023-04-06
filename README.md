@@ -190,6 +190,7 @@ in `displayOutput.js`
 - [Age Calculator | Javascript Project](https://youtu.be/Mz9COyHPVwA) - To get some ideas
 - [How to display JavaScript form error message in html form](https://youtu.be/nNIr0lF7KnU) - This helped.
 - [Animating Number Counters](https://css-tricks.com/animating-number-counters/) -  How to use CSS counters to animate a number by adjusting the count.
+- [A Handy Little System for Animated Entrances in CSS](https://css-tricks.com/a-handy-little-system-for-animated-entrances-in-css/) 
 
 ## Author
 
