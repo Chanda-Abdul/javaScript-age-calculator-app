@@ -14,14 +14,5 @@
 
 
 
-body {
-    width: 100vw;
-    background-color: $neutral-light-grey;   
-}
 
-.container{
-    min-height: 100vh;
-    @include flex(column,space-evenly, center);
-    padding: 8.8rem 1.6rem auto 1.6rem;
 
-}

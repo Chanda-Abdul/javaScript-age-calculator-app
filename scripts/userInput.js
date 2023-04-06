@@ -16,73 +16,86 @@ let inputDate = {
 
 /*  Listen for input changes */
 monthInput.addEventListener('input', function () {
-    monthInputValue = +monthInput.value;
-  });
-  
-  dayInput.addEventListener('input', function () {
-    dayInputValue = +dayInput.value;
-  });
-  
-  yearInput.addEventListener('input', function () {
-    yearInputValue = +yearInput.value;
-  });
+  clearError('month');
+  monthInputValue = +monthInput.value;
+});
+
+dayInput.addEventListener('input', function () {
+  clearError('day');
+  dayInputValue = +dayInput.value;
+});
+
+yearInput.addEventListener('input', function () {
+  clearError('year');
+  yearInputValue = +yearInput.value;
+});
+
 
 function validateInputDate() {
-    /* collect input from HTML form and convert into date format */
-    inputDate = {
-      fullDate: new Date(
-        `${yearInputValue}, ${monthInputValue}, ${dayInputValue}`
-      ),
-      month: monthInputValue,
-      day: dayInputValue,
-      year: yearInputValue,
-    };
-  
-    let { month, day, year } = inputDate;
-  
-    /* Validate  Input */
-    let validMonth = true;
-    let validDay = true;
-    let validYear = true;
-  
-    /* Update month for leap years */
-    if ((!(year % 4) && year % 100) || !(year % 400)) daysPerMonth[1] = 29;
-  
-    /* Validate day of month is within range*/
-    if (
-      day > daysPerMonth[month - 1] ||
-      day > 31 ||
-      day < 1 ||
-      (day > currentDay && month == currentMonth + 1 && year == currentYear)
-    ) {
-      validDay = false;
-      showError('day-error', 'Must be a valid day');
-    }
-  
-    /* Validate Month */
-    if (
-      (month > currentMonth + 1 && year == currentYear) ||
-      month < 1 ||
-      month > 12 ||
-      (day > currentDay && month == currentMonth + 1 && year == currentYear)
-    ) {
-      validMonth = false;
-      showError('month-error', 'Must be a valid month');
-    }
-  
-    /* Validate Year */
-    if (year > currentYear || year < 1) {
-      validYear = false;
-      showError('year-error', 'Must be in the past');
-    }
-  
-    if (validMonth && validDay && validYear) {
-      displayOutput();
-    }
-    return false;
+  /* collect input from HTML form and convert into date format */
+  inputDate = {
+    fullDate: new Date(
+      `${yearInputValue}, ${monthInputValue}, ${dayInputValue}`
+    ),
+    month: monthInputValue,
+    day: dayInputValue,
+    year: yearInputValue,
+  };
+
+  let { month, day, year } = inputDate;
+
+  /* Validate  Input */
+  let validMonth = true;
+  let validDay = true;
+  let validYear = true;
+
+  /* Update month for leap years */
+  if ((!(year % 4) && year % 100) || !(year % 400)) daysPerMonth[1] = 29;
+
+  /* Validate day of month is within range*/
+  if (
+    day > daysPerMonth[month - 1] ||
+    day > 31 ||
+    day < 1 ||
+    (day > currentDay && month == currentMonth + 1 && year == currentYear)
+  ) {
+    validDay = false;
+    showError('day-input-error', 'day-error', 'Must be a valid day');
   }
-  
-  function showError(errorElement, errorMessage) {
-    document.getElementById(errorElement).classList.add('display-error');
-    document.getElementById(errorElement).innerHTML = errorMessage;
+
+  /* Validate Month */
+  if (
+    (month > currentMonth + 1 && year == currentYear) ||
+    month < 1 ||
+    month > 12 ||
+    (day > currentDay && month == currentMonth + 1 && year == currentYear)
+  ) {
+    validMonth = false;
+    showError('month-input-error', 'month-error', 'Must be a valid month');
+  }
+
+  /* Validate Year */
+  if (year > currentYear || year < 1) {
+    validYear = false;
+    showError('year-input-error', 'year-error', 'Must be in the past');
+  }
+
+  if (validMonth && validDay && validYear) {
+    displayOutput();
+  }
+  return false;
+}
+
+function showError(errorElement, errorMessageElement, errorMessage) {
+  document.getElementById(errorElement).classList.add('input-error');
+  document.getElementById(errorMessageElement).classList.add('display-error');
+  document.getElementById(errorMessageElement).innerHTML = errorMessage;
+}
+
+
+function clearError(element) {
+    document.getElementById(`${element}-error`).classList.remove('display-error');
+    document
+      .getElementById(`${element}-input-error`)
+      .classList.remove('input-error');
   }

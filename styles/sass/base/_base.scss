@@ -13,10 +13,12 @@ html {
 }
 
 body {
-    box-sizing: border-box;
+    box-sizing: border-box; width: 100vw;
+    background-color: $neutral-light-grey;   
 }
 
-a {
+a:link,a:visited,a:hover,a:active {
+    color: $primary-purple;
     text-decoration: none;
     transition: 0.3s;
   }
@@ -24,3 +26,10 @@ a {
   button:hover, input:hover{
     cursor: pointer;
   }
+
+  .container{
+    min-height: 100vh;
+    @include flex(column,space-evenly, center);
+    padding: 8.8rem 1.6rem auto 1.6rem;
+
+}

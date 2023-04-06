@@ -1,6 +1,6 @@
 .header {
   max-width: 34.3rem;
-  margin-bottom: 1.6rem;
+  margin: 4.4rem auto 1.6rem auto;
 
   &__title {
     @include heading-secondary;

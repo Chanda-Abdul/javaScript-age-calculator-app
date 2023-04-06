@@ -10,9 +10,9 @@ let currentDay = today.getDate();
 let currentYear = today.getFullYear();
 
 function calculateTimePassed() {
-  document.querySelector('.month-error').classList.remove('display-error');
-  document.querySelector('.day-error').classList.remove('display-error');
-  document.querySelector('.year-error').classList.remove('display-error');
+  clearError('month');
+  clearError('day');
+  clearError('year');
 
   validateInputDate();
 }
