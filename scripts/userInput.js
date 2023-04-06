@@ -30,7 +30,6 @@ yearInput.addEventListener('input', function () {
   yearInputValue = +yearInput.value;
 });
 
-
 function validateInputDate() {
   /* collect input from HTML form and convert into date format */
   inputDate = {
@@ -53,7 +52,10 @@ function validateInputDate() {
   if ((!(year % 4) && year % 100) || !(year % 400)) daysPerMonth[1] = 29;
 
   /* Validate day of month is within range*/
-  if (
+  if (dayInputValue == null || '') {
+    validDay = false;
+    showError('day-input-error', 'day-error', 'This field is required');
+  } else if (
     day > daysPerMonth[month - 1] ||
     day > 31 ||
     day < 1 ||
@@ -64,7 +66,10 @@ function validateInputDate() {
   }
 
   /* Validate Month */
-  if (
+  if (monthInputValue == null || '') {
+    validMonth = false;
+    showError('month-input-error', 'month-error', 'This field is required');
+  } else if (
     (month > currentMonth + 1 && year == currentYear) ||
     month < 1 ||
     month > 12 ||
@@ -75,15 +80,23 @@ function validateInputDate() {
   }
 
   /* Validate Year */
-  if (year > currentYear || year < 1) {
+  if (yearInputValue == null || '') {
+    validYear = false;
+    showError('year-input-error', 'year-error', 'This field is required');
+  } else if (year > currentYear || year < 1) {
     validYear = false;
     showError('year-input-error', 'year-error', 'Must be in the past');
   }
 
   if (validMonth && validDay && validYear) {
+    document.getElementById('btn-calculate').classList.add('slide-right');
+
     displayOutput();
+  } else {
+    document.getElementById('btn-calculate').classList.add('slide-left');
+
+    return false;
   }
-  return false;
 }
 
 function showError(errorElement, errorMessageElement, errorMessage) {
@@ -92,10 +105,11 @@ function showError(errorElement, errorMessageElement, errorMessage) {
   document.getElementById(errorMessageElement).innerHTML = errorMessage;
 }
 
-
 function clearError(element) {
-    document.getElementById(`${element}-error`).classList.remove('display-error');
-    document
-      .getElementById(`${element}-input-error`)
-      .classList.remove('input-error');
-  }
+  document.getElementById('btn-calculate').classList.remove('slide-right');
+  document.getElementById('btn-calculate').classList.remove('slide-left');
+  document.getElementById(`${element}-error`).classList.remove('display-error');
+  document
+    .getElementById(`${element}-input-error`)
+    .classList.remove('input-error');
+}

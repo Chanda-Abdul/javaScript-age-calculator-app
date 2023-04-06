@@ -1,35 +1,41 @@
 *,
 *::after,
 *::before {
-    margin: 0;
-    padding: 0;
-    box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
 
 }
 
 html {
-    /* set 1rem === 10px */
-    font-size: 62.5%;
+  /* set 1rem === 10px */
+  font-size: 62.5%;
 }
 
 body {
-    box-sizing: border-box; width: 100vw;
-    background-color: $neutral-light-grey;   
+  box-sizing: border-box;
+  width: 100vw;
+  background-color: $neutral-light-grey;
 }
 
-a:link,a:visited,a:hover,a:active {
-    color: $primary-purple;
-    text-decoration: none;
-    transition: 0.3s;
-  }
+a:link,
+a:visited,
+a:hover,
+a:active {
+  color: $primary-purple;
+  text-decoration: none;
+  transition: 0.3s;
+  margin-left: .2rem;
+}
 
-  button:hover, input:hover{
-    cursor: pointer;
-  }
+button:hover,
+input:hover {
+  cursor: pointer;
+}
 
-  .container{
-    min-height: 100vh;
-    @include flex(column,space-evenly, center);
-    padding: 8.8rem 1.6rem auto 1.6rem;
+.container {
+  min-height: 100vh;
+  @include flex(column, space-evenly, center);
+  padding: 8.8rem 1.6rem auto 1.6rem;
 
 }

@@ -2,7 +2,7 @@
 
 body {
   font-family: 'Poppins', sans-serif;
-  font-size: $font-size-default;
+  font-size: 3.2rem;
   font-weight: 700;
 }
 
@@ -32,18 +32,15 @@ body {
   color: $neutral-off-black;
 }
 
-
-
 @mixin heading-tertiary {
   /* Heading Small */
   font-weight: 700;
   font-size: 1.4rem;
   line-height: 2.1rem;
   font-style: normal;
-  /* identical to box height */
   letter-spacing: 0.25em;
   text-transform: uppercase;
-  color: $neutral-off-black;
+  color: $neutral-smokey-grey;
 }
 
 @mixin heading-tertiary-mobile {
@@ -57,7 +54,7 @@ body {
 
 @mixin body-text {
   /* Body text */
-  // font-style: italic;
+  font-style: italic;
   font-weight: 400;
   font-size: 1.4rem;
   line-height: 2.1rem;

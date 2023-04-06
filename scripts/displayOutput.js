@@ -24,9 +24,9 @@ function calculateOutput() {
   yearOutput = currentYear - year;
 
   /* calculate months */
-  if (currentMonth >= month)
+  if (currentMonth + 1 >= month)
     /* get month when currentMonth is greater that month input */
-    monthOutput = currentMonth - month;
+    monthOutput = currentMonth + 1 - month;
   else {
     yearOutput--;
     /* if input month exceeds currentMonth */
@@ -67,13 +67,21 @@ function calculateOutput() {
 function displayOutput() {
   let output = calculateOutput();
 
-  /* Get output elements */
-  let yearDisplay = document.getElementById('year-result');
-  let monthDisplay = document.getElementById('month-result');
-  let dayDisplay = document.getElementById('day-result');
+  /* Get output elements and animate result  */
+  animateValue(document.getElementById('year-result'), 0, output.years, 1500);
+  animateValue(document.getElementById('month-result'), 0, output.months,((2600 / 13) * (output.months+1)));
+  animateValue(document.getElementById('day-result'), 0, output.days, (3100 / 31) * output.days);
+}
 
-  /* Then output result  */
-  yearDisplay.innerHTML = output.years;
-  monthDisplay.innerHTML = output.months;
-  dayDisplay.innerHTML = output.days;
+function animateValue(obj, start, end, duration) {
+  let startTimestamp = null;
+  const step = (timestamp) => {
+    if (!startTimestamp) startTimestamp = timestamp;
+    const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+    obj.innerHTML = Math.floor(progress * (end - start) + start);
+    if (progress < 1) {
+      window.requestAnimationFrame(step);
+    }
+  };
+  window.requestAnimationFrame(step);
 }

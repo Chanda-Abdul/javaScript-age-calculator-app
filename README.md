@@ -36,8 +36,8 @@ You can use any tools you like to help you complete the challenge. So if you've 
   - [x] The year is in the future
   - [x] The date is invalid e.g. <i>31/04/1991(there are 30 days in April)</i> 
 - [ ] View the optimal layout for the interface depending on their device's screen size
-- [ ] See hover and focus states for all interactive elements on the page
-- [ ] **Bonus**: See the age numbers animate to their final number when the form is submitted
+- [x] See hover and focus states for all interactive elements on the page
+- [x] **Bonus**: See the age numbers animate to their final number when the form is submitted
 
 ## Screenshots
 
@@ -58,39 +58,130 @@ You can use any tools you like to help you complete the challenge. So if you've 
 
 ## What I learned
 
-<!-- Use this section to recap over some of your major learnings while working through this project. Writing these out and providing code samples of areas you want to highlight is a great way to reinforce your own knowledge.
+- Becoming more comfortable using <b>Sass</b> with <b>BEM</b> styling conventions for <b>CSS</b>
+- <b>JavaScript DOM Manipulation</b>
+- JavaScript <b>`Date()`</b>
+### Validate user inputs 
+this was intense but
+  - Validates year for current year and previous months
+ - Validates month input for current month and  previous months
+ - Validates month input for current day and  previous days, also checks for leap year
+ - also animates submit => button 
 
-To see how you can add code snippets, see below:
+```ts
+function validateInputDate() {
+  /* collect input from HTML form and convert into date format */
+  inputDate = {
+    ...
+    month: monthInputValue,
+    day: dayInputValue,
+    year: yearInputValue,
+  };
 
-```html
-<h1>Some HTML code I'm proud of</h1>
-```
-```css
-.proud-of-this-css {
-  color: papayawhip;
+  let { month, day, year } = inputDate;
+
+  /* Validate  Input */
+  let validMonth = true;
+  let validDay = true;
+  let validYear = true;
+
+  /* Update month for leap years */
+  if ((!(year % 4) && year % 100) || !(year % 400)) daysPerMonth[1] = 29;
+
+  /* Validate day of month is within range*/
+  if (dayInputValue == null || '') {
+    validDay = false;
+    showError('day-input-error', 'day-error', 'This field is required');
+  } else if (
+    day > daysPerMonth[month - 1] || day > 31 || day < 1 ||
+    (day > currentDay && month == currentMonth + 1 && year == currentYear)
+  ) {
+    validDay = false;
+    showError('day-input-error', 'day-error', 'Must be a valid day');
+  }
+
+  /* Validate Month */
+  if (monthInputValue == null || '') {
+    validMonth = false;
+    showError(...);
+  } else if (
+    (month > currentMonth + 1 && year == currentYear) || month < 1 || month > 12 ||
+    (day > currentDay && month == currentMonth + 1 && year == currentYear)
+  ) {
+    validMonth = false;
+    showError(...);
+  }
+
+  /* Validate Year */
+  if (yearInputValue == null || '') {
+    validYear = false;
+    showError(...);
+  } else if (year > currentYear || year < 1) {
+    validYear = false;
+    showError(...);
+  }
+
+  if (validMonth && validDay && validYear) {
+    document.getElementById('btn-calculate').classList.add('slide-right');
+    displayOutput();
+
+  } else {
+    document.getElementById('btn-calculate').classList.add('slide-left');
+    return false;
+  }
 }
 ```
+### Dynamically use JavaScript to add/clear error classes to HTML elements
 ```js
-const proudOfThisFunc = () => {
-  console.log('🎉')
+function showError(errorElement, errorMessageElement, errorMessage) {
+  document.getElementById(errorElement).classList.add('input-error');
+  document.getElementById(errorMessageElement).classList.add('display-error');
+  document.getElementById(errorMessageElement).innerHTML = errorMessage;
+}
+
+function clearError(element) {
+  document.getElementById('btn-calculate').classList.remove('slide-right');
+  document.getElementById('btn-calculate').classList.remove('slide-left');
+  document.getElementById(`${element}-error`).classList.remove('display-error');
+  document.getElementById(`${element}-input-error`).classList.remove('input-error');
+}
+```
+### Animated JavaScript Counter for output results
+in `displayOutput.js`
+```js
+function displayOutput() {
+  let output = calculateOutput();
+
+  /* Get output elements and animate result  */
+  animateValue(document.getElementById('year-result'), 0, output.years, 1500);
+  ...
+
+}
+
+function animateValue(obj, start, end, duration) {
+  let startTimestamp = null;
+  const step = (timestamp) => {
+    if (!startTimestamp) startTimestamp = timestamp;
+    const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+    obj.innerHTML = Math.floor(progress * (end - start) + start);
+    if (progress < 1) {
+      window.requestAnimationFrame(step);
+    }
+  };
+  window.requestAnimationFrame(step);
 }
 ```
 
-If you want more help with writing markdown, we'd recommend checking out [The Markdown Guide](https://www.markdownguide.org/) to learn more. -->
-
-## Continued development
-
-<!-- Use this section to outline areas that you want to continue focusing on in future projects. These could be concepts you're still not completely comfortable with or techniques you found useful that you want to refine and perfect. -->
 
 
 ## Useful resources
 
-- [Standard built-in objects `Date`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) - JavaScript `Date` objects represent a single moment in time in a platform-independent format. Date objects encapsulate an integral number that represents milliseconds since the midnight at the beginning of <i>January 1, 1970, UTC (the epoch)</i>.
+- [Standard built-in objects `Date()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) - JavaScript `Date()` objects represent a single moment in time in a platform-independent format. Date objects encapsulate an integral number that represents milliseconds since the midnight at the beginning of <i>January 1, 1970, UTC (the epoch)</i>.
 - [ChatGPT](https://chat.openai.com/) - to write the instructions... and some JavaScript
-- [Age Calculator | Javascript Project](https://youtu.be/Mz9COyHPVwA) - This is an amazing article which helped me finally understand XYZ. I'd recommend it to anyone still learning this concept.
-- [How to display JavaScript form error message in html form](https://youtu.be/nNIr0lF7KnU) - This helped me for XYZ reason. I really liked this pattern and will use it going forward.
-<!-- - [Example resource 2](https://www.example.com) - This is an amazing article which helped me finally understand XYZ. I'd recommend it to anyone still learning this concept. -->
-<!-- - [Example resource 2](https://www.example.com) - This is an amazing article which helped me finally understand XYZ. I'd recommend it to anyone still learning this concept. -->
+- [Age Calculator | Javascript Project](https://youtu.be/Mz9COyHPVwA) - To get some ideas
+- [How to display JavaScript form error message in html form](https://youtu.be/nNIr0lF7KnU) - This helped.
+- [Animating Number Counters](https://css-tricks.com/animating-number-counters/) -  How to use CSS counters to animate a number by adjusting the count.
+
 ## Author
 
 - Website - [Chanda Abdul](https://www.Chandabdul.dev)

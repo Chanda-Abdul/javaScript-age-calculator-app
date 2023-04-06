@@ -1,5 +1,50 @@
 /* Mixins */
 @import url(https://fonts.bunny.net/css?family=poppins:400,400i,600,600i,700,800i);
+.icon {
+  -webkit-animation: slide-center 1.5s forwards;
+  -webkit-animation-delay: 1s;
+  animation: slide-center 1.5s forwards; }
+
+.slide-right .icon {
+  -webkit-animation: slide-right 1s forwards;
+  -webkit-animation-delay: .5s;
+  animation: slide-right 1s forwards; }
+
+.slide-left .icon {
+  -webkit-animation: slide-left 1s forwards;
+  -webkit-animation-delay: .5s;
+  animation: slide-left 1s forwards; }
+
+@-webkit-keyframes slide-center {
+  100% {
+    background: #854dff;
+    left: calc(50% - 3.2rem);
+    transform: rotate(-90deg); }
+  0% {
+    background: inherit;
+    left: calc(0% - 3.2rem);
+    transform: rotate(90deg); } }
+
+@-webkit-keyframes slide-right {
+  100% {
+    left: calc(100% - 6.4rem);
+    transform: rotate(0deg);
+    background: #141414; }
+  0% {
+    background: #854dff;
+    left: calc(50% - 3.2rem);
+    transform: rotate(900deg); } }
+
+@-webkit-keyframes slide-left {
+  100% {
+    background: #ff5757;
+    left: 0;
+    transform: rotate(180deg); }
+  0% {
+    background: #854dff;
+    left: calc(50% - 3.2rem);
+    transform: rotate(-720deg); } }
+
 *,
 *::after,
 *::before {
@@ -16,12 +61,17 @@ body {
   width: 100vw;
   background-color: #dbdbdb; }
 
-a:link, a:visited, a:hover, a:active {
+a:link,
+a:visited,
+a:hover,
+a:active {
   color: #854dff;
   text-decoration: none;
-  transition: 0.3s; }
+  transition: 0.3s;
+  margin-left: .2rem; }
 
-button:hover, input:hover {
+button:hover,
+input:hover {
   cursor: pointer; }
 
 .container {
@@ -37,6 +87,21 @@ body {
   font-family: 'Poppins', sans-serif;
   font-size: 3.2rem;
   font-weight: 700; }
+
+.btn-calculate {
+  border: none;
+  background-color: transparent; }
+  .btn-calculate .icon {
+    position: absolute;
+    left: calc(50% - 3.2rem);
+    bottom: -3.2rem;
+    transform: rotate(-90deg);
+    padding: 2rem;
+    width: 6.4rem;
+    height: 6.4rem;
+    background: #854dff;
+    border-radius: 21.6rem;
+    z-index: 1; }
 
 .card {
   background-color: white;
@@ -57,7 +122,7 @@ body {
   padding: 4.8rem 2.4rem; }
   .card__results--section {
     width: 100%;
-    margin-top: 6.4rem;
+    margin-top: 4.8rem;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -82,27 +147,6 @@ body {
     line-height: 6.2rem; }
     .card__results--display span {
       color: #854dff; }
-
-.icon {
-  position: absolute;
-  transform: rotate(-90deg);
-  padding: 2rem;
-  gap: 8px;
-  width: 6.4rem;
-  height: 6.4rem;
-  bottom: -3.2rem;
-  left: calc(50% - 3.2rem);
-  background: #854dff;
-  border-radius: 21.6rem;
-  z-index: 1; }
-
-.icon.invalid {
-  background: #ff5757;
-  transform: rotate(180deg); }
-
-.icon.valid {
-  background: green;
-  transform: rotate(-90deg); }
 
 .form {
   position: relative;
@@ -142,10 +186,10 @@ body {
         line-height: 2.1rem;
         color: #141414;
         color: #ff5757;
-        font-size: .75rem;
-        line-height: 1.6rem; }
+        font-size: .75rem; }
       .form__wrapper--input span.display-error {
-        display: contents; }
+        color: #ff5757;
+        display: block; }
   .form__label {
     /* Heading Small */
     font-weight: 700;
@@ -176,13 +220,15 @@ body {
     height: 5.4rem;
     width: 8.7rem;
     border-radius: 8px;
+    color: #141414 !important;
     border: 1px solid #dbdbdb;
-    color: #141414;
     padding: 1.2rem 1.6rem 1.2rem 1.6rem; }
-    .form input:active {
-      color: #141414; }
-    .form input:active {
-      border: #854dff; }
+    .form input:active, .form input:focus {
+      border: 1px solid #854dff; }
+
+@media screen and (min-width: 768px) {
+  __wrapper--content--input.input-error span {
+    font-size: 1.4rem; } }
 
 .header {
   max-width: 34.3rem;
@@ -211,15 +257,18 @@ body {
       font-weight: 600; }
 
 footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
   /* Body text */
   font-weight: 400;
   font-size: 1.4rem;
   line-height: 2.1rem;
   color: #141414;
-  position: sticky;
+  width: 100%;
   bottom: 0;
   font-size: 1.1rem;
-  text-align: center; }
-  footer__link :active,
-  footer__link :visited {
-    color: #854dff; }
+  text-align: center;
+  padding: 1.6rem auto; }

@@ -1,18 +1,9 @@
 footer {
+    @include flex(row, center, center);
     @include body-text;
-    position:sticky;
+    width: 100%;
     bottom: 0;
     font-size: 1.1rem;
     text-align: center;
-
-    &__link {
-
-        :active,
-        :visited {
-            color: $primary-purple;
-        }
-
-    }
-
-
+    padding: 1.6rem auto;
 }

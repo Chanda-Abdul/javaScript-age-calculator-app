@@ -1,7 +1,6 @@
 .form {
     position: relative;
     width: 100%;
-
     border-bottom: 1px solid $neutral-light-grey;
 
     &__wrapper {
@@ -41,12 +40,12 @@
                 @include body-text;
                 color: $primary-light-red;
                 font-size: .75rem;
-                line-height: 1.6rem;
             }
 
             span.display-error {
-
-                display: contents;
+                // @include body-text;
+                color: $primary-light-red;
+                display: block;
 
 
             }
@@ -72,18 +71,31 @@
         height: 5.4rem;
         width: 8.7rem;
         border-radius: 8px;
+        color: $neutral-off-black !important;
         border: 1px solid $neutral-light-grey;
-        color: $neutral-off-black;
+
         padding: 1.2rem 1.6rem 1.2rem 1.6rem;
 
-        &:active {
-            color: $neutral-off-black;
-        }
 
-        &:active {
-            border: $primary-purple;
+
+        &:active,
+        &:focus {
+            border: 1px solid $primary-purple;
         }
     }
+}
 
+@media screen and (min-width:768px) {
+    &__wrapper {
+        &--content {
+            &--input {
 
+                &.input-error {
+                    span {
+                        font-size: 1.4rem;
+                    }
+                }
+            }
+        }
+    }
 }

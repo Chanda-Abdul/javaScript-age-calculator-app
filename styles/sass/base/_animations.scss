@@ -1,0 +1,65 @@
+
+.icon {
+   -webkit-animation: slide-center 1.5s forwards;
+    -webkit-animation-delay: 1s;
+    animation: slide-center 1.5s forwards;
+
+}
+
+.slide-right .icon {
+    -webkit-animation: slide-right 1s forwards;
+    -webkit-animation-delay: .5s;
+    animation: slide-right 1s forwards;
+
+}
+
+.slide-left .icon {
+    -webkit-animation: slide-left 1s forwards;
+    -webkit-animation-delay: .5s;
+    animation: slide-left 1s forwards;
+}
+
+
+@-webkit-keyframes slide-center {
+    100% {
+        background: $primary-purple;
+        left: calc(50% - 3.2rem);
+        transform: rotate(-90deg);
+         }
+
+    0% {
+        background: inherit;
+        left: calc(0% - 3.2rem);
+        transform: rotate(90deg);
+
+    }
+}
+
+@-webkit-keyframes slide-right {
+    100% {
+        left: calc(100% - 6.4rem);
+        transform: rotate(0deg);
+        background: $neutral-off-black;
+    }
+
+    0% {
+        background: $primary-purple;
+        left: calc(50% - 3.2rem);
+        transform: rotate(900deg);
+    }
+}
+
+
+@-webkit-keyframes slide-left {
+    100% {
+        background: $primary-light-red;
+        left: 0;
+        transform: rotate(180deg);
+    }
+
+    0% {
+        background: $primary-purple;
+        left: calc(50% - 3.2rem);
+        transform: rotate(-720deg);
+    }
+}
