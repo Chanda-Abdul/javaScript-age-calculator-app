@@ -3,10 +3,14 @@
   "description": "Landing page for Age calculator app",
   "main": "index.html",
   "scripts": {
+    "test": "jest /scripts",
     "start": "npm run compile:sass ",
     "compile:sass": "node-sass styles/sass/main.scss styles/styles.css -w"
   },
   "dependencies": {
     "node-sass": "^8.0.0"
+  },
+  "devDependencies": {
+    "jest": "^29.5.0"
   }
 }

@@ -9,29 +9,24 @@ let yearInputValue = null;
 
 let inputDate = {
   fullDate: new Date(),
-  month: monthInputValue,
-  day: dayInputValue,
-  year: yearInputValue,
+  month: null,
+  day: null,
+  year: null,
 };
 
-/*  Listen for input changes */
-monthInput.addEventListener('input', function () {
-  clearError('month');
-  monthInputValue = +monthInput.value;
-});
+const calcButton = document.getElementById('btn-calculate');
 
-dayInput.addEventListener('input', function () {
-  clearError('day');
-  dayInputValue = +dayInput.value;
-});
-
-yearInput.addEventListener('input', function () {
-  clearError('year');
-  yearInputValue = +yearInput.value;
-});
+function calculateTimePassed() {
+  clearErrors(['month', 'day', 'year']);
+  validateInputDate();
+}
 
 function validateInputDate() {
   /* collect input from HTML form and convert into date format */
+  monthInputValue = +monthInput.value;
+  dayInputValue = +dayInput.value;
+  yearInputValue = +yearInput.value;
+
   inputDate = {
     fullDate: new Date(
       `${yearInputValue}, ${monthInputValue}, ${dayInputValue}`
@@ -41,63 +36,80 @@ function validateInputDate() {
     year: yearInputValue,
   };
 
-  let { month, day, year } = inputDate;
-
+  const { month, day, year } = inputDate;
+ 
   /* Validate  Input */
   let validMonth = true;
   let validDay = true;
   let validYear = true;
 
   /* Update month for leap years */
-((!(year % 4) && year % 100) || !(year % 400)) ? daysPerMonth[1] = 29 : daysPerMonth[1] = 28;
+  (!(year % 4) && year % 100) || !(year % 400)
+    ? (daysPerMonth[1] = 29)
+    : (daysPerMonth[1] = 28);
 
   /* Validate day of month is within range*/
-  if (dayInputValue == null || '') {
+  if (!dayInputValue) {
     validDay = false;
     showError('day-input-error', 'day-error', 'This field is required');
   } else if (
     day > daysPerMonth[month - 1] ||
     day > 31 ||
     day < 1 ||
-    (day > currentDay && month == currentMonth + 1 && year == currentYear)
+    (day > new Date().getDate() &&
+      month === new Date().getMonth() + 1 &&
+      year === new Date().getFullYear())
   ) {
     validDay = false;
     showError('day-input-error', 'day-error', 'Must be a valid day');
   }
 
   /* Validate Month */
-  if (monthInputValue == null || '') {
+  if (!monthInputValue) {
     validMonth = false;
     showError('month-input-error', 'month-error', 'This field is required');
   } else if (
-    (month > currentMonth + 1 && year == currentYear) ||
+    (month > new Date().getMonth() + 1 && year === new Date().getFullYear()) ||
     month < 1 ||
     month > 12 ||
-    (day > currentDay && month == currentMonth + 1 && year == currentYear)
+    (day > new Date().getDate() &&
+      month === new Date().getMonth() + 1 &&
+      year === new Date().getFullYear())
   ) {
     validMonth = false;
     showError('month-input-error', 'month-error', 'Must be a valid month');
   }
 
   /* Validate Year */
-  if (yearInputValue == null || '') {
+  if (!yearInputValue) {
     validYear = false;
     showError('year-input-error', 'year-error', 'This field is required');
-  } else if (year > currentYear || year < 1) {
+  } else if (year > new Date().getFullYear() || year < 1000) {
     validYear = false;
     showError('year-input-error', 'year-error', 'Must be in the past');
   }
 
   if (validMonth && validDay && validYear) {
-    document.getElementById('btn-calculate').classList.add('slide-right');
-
+    calcButton.classList.add('slide-right');
     displayOutput();
   } else {
-    document.getElementById('btn-calculate').classList.add('slide-left');
-
+    calcButton.classList.add('slide-left');
     return false;
   }
 }
+
+/*  Listen for input changes */
+monthInput.addEventListener('input', function () {
+  clearError('month');
+});
+
+dayInput.addEventListener('input', function () {
+  clearError('day');
+});
+
+yearInput.addEventListener('input', function () {
+  clearError('year');
+});
 
 function showError(errorElement, errorMessageElement, errorMessage) {
   document.getElementById(errorElement).classList.add('input-error');
@@ -105,11 +117,16 @@ function showError(errorElement, errorMessageElement, errorMessage) {
   document.getElementById(errorMessageElement).innerHTML = errorMessage;
 }
 
-function clearError(element) {
-  document.getElementById('btn-calculate').classList.remove('slide-right');
-  document.getElementById('btn-calculate').classList.remove('slide-left');
-  document.getElementById(`${element}-error`).classList.remove('display-error');
+function clearErrors(fields) {
+  fields.forEach((field) => clearError(field));
+}
+
+function clearError(field) {
+  calcButton.classList.remove('slide-right');
+  calcButton.classList.remove('slide-left');
+  document.getElementById(`${field}-result`).innerHTML = '--';
   document
-    .getElementById(`${element}-input-error`)
+    .getElementById(`${field}-input-error`)
     .classList.remove('input-error');
+  document.getElementById(`${field}-error`).classList.remove('display-error');
 }

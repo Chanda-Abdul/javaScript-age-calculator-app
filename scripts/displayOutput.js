@@ -1,49 +1,37 @@
-/* Create a list of days of a month  */
-let daysPerMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
-
 /* Get the current date from the system */
-let today = new Date();
+const today = new Date();
 
 /* extract the year, month, and date from current date */
-let currentMonth = today.getMonth();
-let currentDay = today.getDate();
-let currentYear = today.getFullYear();
+const currentMonth = today.getMonth() + 1;
+const currentDay = today.getDate();
+const currentYear = today.getFullYear();
 
-function calculateTimePassed() {
-  clearError('month');
-  clearError('day');
-  clearError('year');
-
-  validateInputDate();
-}
+/* Create a list of days of a month  */
+const daysPerMonth = [31,28,31,30,31,30,31,31,30,31,30,31];
 
 function calculateOutput() {
-  let { month, day, year } = inputDate;
+  const { month, day, year } = inputDate;
 
   /* calculate years */
   yearOutput = currentYear - year;
 
   /* calculate months */
-  if (currentMonth + 1 >= month)
+  if (currentMonth >= month)
     /* get month when currentMonth is greater that month input */
-    monthOutput = currentMonth + 1 - month;
+    monthOutput = currentMonth - month;
   else {
-    yearOutput--;
     /* if input month exceeds currentMonth */
-    monthOutput = currentMonth + 1 - month + 12;
+    yearOutput--;
+    monthOutput = currentMonth + 12 - month;
   }
-
-  /* update for Leap Years  */
-  if ((!(year % 4) && year % 100) || !(year % 400)) daysPerMonth[1] = 29;
 
   /* calculate days  */
   if (currentDay >= day) {
     /* when the current date is greater */
     dayOutput = currentDay - day;
   } else {
-    /*  
-        if input date is greater than currentDay
-        get days per month from the previous month? 
+    /*  if input date is greater than currentDay
+        get daysPerMonth from the previous month 
         and subtract the day to get the remaining days 
       */
     dayOutput = daysPerMonth[currentMonth - 1] + currentDay - day;
@@ -54,31 +42,30 @@ function calculateOutput() {
       yearOutput--;
     }
   }
-
-  outputToDisplay = {
+  return {
     years: yearOutput,
     months: monthOutput,
     days: dayOutput,
   };
-
-  return outputToDisplay;
 }
 
 function displayOutput() {
-  let output = calculateOutput();
+  const { years, months, days } = calculateOutput();
 
   /* Get output elements and animate result  */
-  animateValue(document.getElementById('year-result'), 0, output.years, 1500);
-  animateValue(document.getElementById('month-result'), 0, output.months,((2600 / 13) * (output.months+1)));
-  animateValue(document.getElementById('day-result'), 0, output.days, (3100 / 31) * output.days);
+  animateValue('year-result', 0, years, 1500);
+  animateValue('month-result', 0, months, (2600 / 13) * (months + 1));
+  animateValue('day-result', 0, days, (3100 / 31) * (days||1));
 }
 
-function animateValue(obj, start, end, duration) {
+function animateValue(element, start, end, duration) {
+  const currentElement = document.getElementById(element);
   let startTimestamp = null;
+
   const step = (timestamp) => {
     if (!startTimestamp) startTimestamp = timestamp;
     const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-    obj.innerHTML = Math.floor(progress * (end - start) + start);
+    currentElement.innerHTML = Math.floor(progress * (end - start) + start);
     if (progress < 1) {
       window.requestAnimationFrame(step);
     }

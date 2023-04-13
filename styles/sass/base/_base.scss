@@ -15,6 +15,7 @@ html {
 body {
   box-sizing: border-box;
   width: 100vw;
+  min-height: 100vh;
   background-color: $neutral-light-grey;
 }
 
